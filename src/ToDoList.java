@@ -59,11 +59,13 @@ public class ToDoList {
         else {return;}
         if(positionNumber < myList.size() && positionNumber >= 0 ){
             String message = text.substring((text.indexOf((" "),indexStart) + 1), text.length());
+            System.out.println("Дело " + "\"" +myList.get(positionNumber) + "\"" + " заменено на " + "\"" + message + "\"");
             myList.set(positionNumber, message);
         }
-        else {return;}
+        else {
+            System.out.println("Дело с таким индексом не существует");
+        }
     }
-
     public static void list(){
         StringBuilder tasks = new StringBuilder();
         for (int i = 0 ; i < myList.size(); i++){
@@ -72,8 +74,9 @@ public class ToDoList {
         System.out.println(tasks);
     }
     public static void delete(int index, String text){
-        if (text.equals(DELETE) || index >= myList.size() || index < 0){return;}
-        myList.remove(index);
+        if(text.equals(DELETE) || index < 0){return;}
+        if(index >= myList.size()){System.out.println("Дело с таким индексом не существует"); return;}
+            System.out.println("Дело " + myList.get(index) + " удалено");
+            myList.remove(index);
     }
-
 }
